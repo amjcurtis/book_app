@@ -20,6 +20,8 @@ JavaScript, HTML, CSS, a templating engine (Handlebars or EJS), Node.js, Express
 ## Change Log
 
 02-26-2019 9:45am - Initial file/folder scaffolding added.
+02-26-2019 10:35am - added search functionality
+02-26-2019 11:20 am - added browsing features
 
 ## Credits and Collaborations
 Tanner Percival was my collaborator for building this app.
