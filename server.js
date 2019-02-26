@@ -50,6 +50,11 @@ function Book(request) {
 // HELPER FUNCTIONS
 ///////////////////////////////
 
+function handleError(err, res) {
+  console.error(err);
+  if (res) res.status(500).send('Sorry, something went wrong');
+}
+
 function newSearch(request, response) {
   response.render('pages/index');
   app.use(express.static('./public'));
@@ -70,4 +75,3 @@ function createSearch(request, response) {
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
     .then(results => response.render('pages/searches/show', { searchResults: results }));
 }
-
