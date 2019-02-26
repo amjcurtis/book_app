@@ -12,14 +12,22 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// app.use(cors());
+
 // Application Middleware
-app.use(express.urlencoded( { extended: true } ));
+app.use(express.urlencoded({ extended: true }));
 
 // Set file location for EJS templates and static files like CSS
 app.set('vew engine', 'ejs');
 app.use(express.static('./public'));
 
 // API Routes
+
+// Test route
+app.get('/hello', (request, response) => {
+  response.status(200).send('Hello!!');
+});
+
 // Render search form
 app.get('/', newSearch);
 
