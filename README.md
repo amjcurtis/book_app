@@ -20,8 +20,8 @@ JavaScript, HTML, CSS, a templating engine (Handlebars or EJS), Node.js, Express
 ## Change Log
 
 02-26-2019 9:45am - Initial file/folder scaffolding added.
-02-26-2019 10:35am - added search functionality
-02-26-2019 11:20 am - added browsing features
+02-26-2019 10:35am - Added search functionality
+02-26-2019 11:20am - Added browsing features
 
 ## Credits and Collaborations
 Tanner Percival was my collaborator for building this app.
@@ -53,13 +53,13 @@ Estimate of time needed to complete: 1 hour 15 minutes
 
 Start time: 11:20am
 
-Finish time: _____
+Finish time: 1:15pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hour 55 min
 
 ## Feature 4: Implement Error Handling
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 30 minutes
 
 Start time: _____
 
@@ -69,7 +69,7 @@ Actual time needed to complete: _____
 
 ## Feature 5: Style Webpage
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 1 hour
 
 Start time: _____
 
