@@ -39,12 +39,11 @@ app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 // MODELS
 ///////////////////////////////
 
-function Book(query, res) {
-  this.search_query = query;
-  this.title = '';
-  this.author = '';
-  this.image_url = ''; // TODO Add short-circuit evaluation in case API returns no image
-  this.description = ''; // TODO Add shot-circuit fallback in case no description?
+function Book(request) {
+  this.title = request.title;
+  this.author = request.authors;
+  this.image_url = request.imageLinks.thumbnail; // TODO Add short-circuit evaluation in case API returns no image
+  this.description = request.description; // TODO Add shot-circuit fallback in case no description?
 }
 
 ///////////////////////////////
