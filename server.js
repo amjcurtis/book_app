@@ -12,13 +12,12 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// app.use(cors());
-
 // Application Middleware
 app.use(express.urlencoded({ extended: true }));
+// app.use(cors());
 
 // Set file location for EJS templates and static files like CSS
-app.set('vew engine', 'ejs');
+app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 
 // API Routes
@@ -29,10 +28,10 @@ app.get('/hello', (request, response) => {
 });
 
 // Render search form
-app.get('/', newSearch);
+// app.get('/', newSearch);
 
 // Create new search to Google Books API
-app.post('/searches', createSearch);
+// app.post('/searches', createSearch);
 
 // Catch-all
 app.get('*', (request, response) => response.status(404).send('This route does not exist!'));
