@@ -24,16 +24,11 @@ app.use(express.static('./public'));
 // API Routes
 ///////////////////////////////
 
-// Test route
-// app.get('/', (request, response) => {
-//   response.status(200).send('Hello!!');
-// });
-
 // Render search form
 app.get('/', newSearch);
 
 // Create new search to Google Books API
-// app.post('/searches', createSearch);
+app.post('/searches', createSearch);
 
 // Catch-all
 app.get('*', (request, response) => response.status(404).send('This route does not exist!'));
@@ -48,8 +43,8 @@ function Book(query, res) {
   this.search_query = query;
   this.title = '';
   this.author = '';
-  this.image_url = '';
-  this.description = '';
+  this.image_url = ''; // TODO Add short-circuit evaluation in case API returns no image
+  this.description = ''; // TODO Add shot-circuit fallback in case no description?
 }
 
 ///////////////////////////////
