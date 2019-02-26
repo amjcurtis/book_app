@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Set file location for EJS templates and static files like CSS
 app.set('view engine', 'ejs');
-app.use(express.static('./public'));
+app.use(express.static('views/pages/index'));
 
 // API Routes
 
