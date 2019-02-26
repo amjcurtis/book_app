@@ -18,17 +18,17 @@ app.use(express.urlencoded({ extended: true }));
 
 // Set file location for EJS templates and static files like CSS
 app.set('view engine', 'ejs');
-app.use(express.static('views/pages/index'));
+app.use(express.static('./public'));
 
 // API Routes
 
 // Test route
-app.get('/', (request, response) => {
-  response.status(200).send('Hello!!');
-});
+// app.get('/', (request, response) => {
+//   response.status(200).send('Hello!!');
+// });
 
 // Render search form
-// app.get('/', newSearch);
+app.get('/', newSearch);
 
 // Create new search to Google Books API
 // app.post('/searches', createSearch);
@@ -37,3 +37,10 @@ app.get('/', (request, response) => {
 app.get('*', (request, response) => response.status(404).send('This route does not exist!'));
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+
+// HELPER FUNCTIONS
+
+function newSearch(request, response) {
+  response.render('pages/index');
+  app.use(express.static('./public'));
+}
