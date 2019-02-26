@@ -3,7 +3,6 @@
 // Application dependencies
 const express = require('express');
 const superagent = require('superagent');
-const cors = require('cors');
 
 // Load environment variables from .env file
 require('dotenv').config();
@@ -14,7 +13,6 @@ const PORT = process.env.PORT || 3000;
 
 // Application Middleware
 app.use(express.urlencoded({ extended: true }));
-// app.use(cors());
 
 // Set file location for EJS templates and static files like CSS
 app.set('view engine', 'ejs');
@@ -57,7 +55,7 @@ function handleError(err, res) {
 
 function newSearch(request, response) {
   response.render('pages/index');
-  app.use(express.static('./public'));
+  app.use(express.static('public'));
 }
 
 function createSearch(request, response) {
