@@ -23,7 +23,7 @@ app.use(express.static('./public'));
 // API Routes
 
 // Test route
-app.get('/hello', (request, response) => {
+app.get('/', (request, response) => {
   response.status(200).send('Hello!!');
 });
 
