@@ -70,3 +70,4 @@ function createSearch(request, response) {
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
     .then(results => response.render('pages/searches/show', { searchResults: results }));
 }
+
