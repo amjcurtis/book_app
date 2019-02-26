@@ -20,27 +20,54 @@ app.use(express.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.use(express.static('./public'));
 
+///////////////////////////////
 // API Routes
-
-// Test route
-// app.get('/', (request, response) => {
-//   response.status(200).send('Hello!!');
-// });
+///////////////////////////////
 
 // Render search form
 app.get('/', newSearch);
 
 // Create new search to Google Books API
-// app.post('/searches', createSearch);
+app.post('/searches', createSearch);
 
 // Catch-all
 app.get('*', (request, response) => response.status(404).send('This route does not exist!'));
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
+///////////////////////////////
+// MODELS
+///////////////////////////////
+
+function Book(query, res) {
+  this.search_query = query;
+  this.title = '';
+  this.author = '';
+  this.image_url = ''; // TODO Add short-circuit evaluation in case API returns no image
+  this.description = ''; // TODO Add shot-circuit fallback in case no description?
+}
+
+///////////////////////////////
 // HELPER FUNCTIONS
+///////////////////////////////
 
 function newSearch(request, response) {
   response.render('pages/index');
   app.use(express.static('./public'));
+}
+
+function createSearch(request, response) {
+  let url = 'https://www.googleapis.com/books/v1/volumes?q=';
+
+  console.log('request.body', request.body);
+  console.log(request.body.search);
+
+  if (request.body.search[1] === 'title') { url += `+intitle:${request.body.search[0]}`; }
+  if (request.body.search[1] === 'author') { url += `+inauthor:${request.body.search[0]}`; }
+
+  console.log('url', url);
+
+  superagent.get(url)
+    .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
+    .then(results => response.render('pages/searches/show', { searchResults: results }));
 }
