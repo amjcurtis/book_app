@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Set file location for EJS templates and static files like CSS
 app.set('view engine', 'ejs');
-app.use(express.static('./public'));
+app.use(express.static('public'));
 
 ///////////////////////////////
 // API Routes
@@ -26,22 +26,27 @@ app.use(express.static('./public'));
 app.get('/', newSearch);
 
 // Create new search to Google Books API
-app.post('/searches', createSearch);
+// Listens for post (from html form in index.ejs)
+app.post('/searches', createSearch); 
 
-// Catch-all
+// Catch-all for errors (must come after all other routes)
 app.get('*', (request, response) => response.status(404).send('This route does not exist!'));
 
+// Start server listening on port
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 ///////////////////////////////
 // MODELS
 ///////////////////////////////
 
-function Book(request) {
-  this.title = request.title;
-  this.author = request.authors;
-  this.image_url = request.imageLinks.thumbnail; // TODO Add short-circuit evaluation in case API returns no image
-  this.description = request.description; // TODO Add shot-circuit fallback in case no description?
+function Book(res) {
+  // const placeholderImage = 'https://i.imgur.com/J5LVHEL.jpg';
+
+  this.title = res.title;
+  this.author = res.authors;
+  // TODO Add short-circuit evaluation in case API returns no image
+  this.image_url = res.imageLinks.thumbnail; // res.imageLinks ? res.imageLInks.smallThumbnail : placeholderImage;
+  this.description = res.description; // TODO Add shot-circuit fallback in case no description?
 }
 
 ///////////////////////////////
@@ -62,7 +67,7 @@ function createSearch(request, response) {
   let url = 'https://www.googleapis.com/books/v1/volumes?q=';
 
   console.log('request.body', request.body);
-  console.log(request.body.search);
+  console.log('request.body.search', request.body.search);
 
   if (request.body.search[1] === 'title') { url += `+intitle:${request.body.search[0]}`; }
   if (request.body.search[1] === 'author') { url += `+inauthor:${request.body.search[0]}`; }
