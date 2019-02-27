@@ -12,23 +12,32 @@
 </head>
 
 <body>
+  <header>
+    <p>Best Books!</p>
+  </header>
   <main>
-    <h4>Search by Title or Author</h1>
+    <h4><p>Search by Title or Author</p></h4>
     <form action="/searches" method="post">
-      <input type="text" name="search" placeholder="Enter title or author" required />
+      <div id="search-box-container">
+      <input id="search-box" type="text" name="search" placeholder="Enter title or author" required />
+      </div>
       <fieldset>
+        <div id="title-box-container">
         <label for="title">
           <span>Title</span>
           <input type="radio" name="search" value="title" required />
         </label>
+      </div>
       </fieldset>
       <fieldset>
+        <div id="author-box-container">
         <label for="author">
           <span>Author</span>
           <input type="radio" name="search" value="author" required />
         </label>
+      </div>
       </fieldset>
-      <button type="submit">Search!</button>
+      <button type="submit">Search the google books API</button>
     </form>
   </main>
 </body>
