@@ -70,6 +70,7 @@ function getSearchHistory(request, response){
     .then(results => response.render('index', {results: results.rows}))
     .catch(error => handleError(error, response));
 }
+console.log(getSearchHistory())
 
 // function viewDetails(request, response){
 //   let SQL =  'SELECT * FROM books WHERE id=$1;';

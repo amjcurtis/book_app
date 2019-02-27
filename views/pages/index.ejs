@@ -2,18 +2,12 @@
 <html>
 
 <head>
-  <title>Search for Books!</title>
-  <meta charset="UTF-8" />
-  <link rel="stylesheet" href="/styles/reset.css" />
-  <link rel="stylesheet" href="/styles/base.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
-  <link rel="stylesheet" href="/styles/modules.css" />
-  <link rel="stylesheet" href="/styles/icon.css" />
+  <%- include('./../layout/head') %>
 </head>
 
 <body>
   <header>
-    <p>Best Books!</p>
+    <%- include('./../layout/header') %>
   </header>
   <main>
     <h4><p>Search by Title or Author</p></h4>
@@ -40,6 +34,9 @@
       <button type="submit">Search the google books API</button>
     </form>
   </main>
+  <footer>
+    <%- include('./../layout/footer') %>
+  </footer>
 </body>
 
 </html>
