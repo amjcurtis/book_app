@@ -3,17 +3,12 @@
 // Application dependencies
 const express = require('express');
 const superagent = require('superagent');
+const pg = require('pg');
 
 // Load environment variables from .env file
 require('dotenv').config();
 
 // Application Setup
-
-
-//ADD PG
-
-
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -23,10 +18,12 @@ app.use(express.urlencoded({ extended: true }));
 // Set file location for EJS templates and static files like CSS
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
+
 //DATABASE SETUP
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
 client.on('error', err => console.error(err))
+
 ///////////////////////////////
 // API Routes
 ///////////////////////////////
@@ -45,7 +42,7 @@ app.get('*', (request, response) => response.status(404).send('This route does n
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 //get details page
-app.get('/details/:book_details', viewDetails);
+// app.get('/details/:book_details', viewDetails);
 
 ///////////////////////////////
 // MODELS
@@ -71,18 +68,19 @@ function getSearchHistory(request, response){
 
   return client.query(SQL)
     .then(results => response.render('index', {results: results.rows}))
-    .catch(handleError);
+    .catch(error => handleError(error, response));
 }
-function viewDetails(request, response){
-  let SQL =  'SELECT * FROM tasks WHERE id=$1;';
-  let values = [request.params.'PARAM_GOES_HERE'];
 
-  return client.query(SQL, values)
-    .then(result => {
-      return response.render('pages/book-details', {task:result.rows[0]});
-    })
-    .catch(err => handleError (err,response));
-}
+// function viewDetails(request, response){
+//   let SQL =  'SELECT * FROM tasks WHERE id=$1;';
+//   let values = [request.params.'PARAM_GOES_HERE'];
+
+//   return client.query(SQL, values)
+//     .then(result => {
+//       return response.render('pages/book-details', {task:result.rows[0]});
+//     })
+//     .catch(err => handleError (err, response));
+// }
 
 function handleError(err, res) {
   console.error(err);
@@ -107,5 +105,7 @@ function createSearch(request, response) {
 
   superagent.get(url)
     .then(apiResponse => apiResponse.body.items.map(bookResult => new Book(bookResult.volumeInfo)))
-    .then(results => response.render('pages/searches/show', { searchResults: results }));
+    .then(results => response.render('pages/searches/show', { searchResults: results }))
+    .catch(error => handleError(error, response));
+
 }
