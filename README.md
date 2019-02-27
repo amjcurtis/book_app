@@ -1,7 +1,7 @@
 # Project Name
 
 **Authors**: Andrew Curtis, Tanner Percival
-**Version**: 1.0.0
+**Version**: 2.0.0
 
 ## Overview
 
@@ -15,17 +15,22 @@ A user must have an internet connection and a modern browser. They will be able 
 
 For this app we will be using the following technologies:
 
-JavaScript, HTML, CSS, a templating engine (Handlebars or EJS), Node.js, Express, SQL, PostgreSQL 
+JavaScript, HTML, CSS, a templating engine (Handlebars or EJS), Node.js, Express, SQL, PostgreSQL
 
 ## Change Log
 
 02-26-2019 9:45am - Initial file/folder scaffolding added.
 02-26-2019 10:35am - Added search functionality
 02-26-2019 11:20am - Added browsing features
+02-26-2019 9:40pm - Added CSS styling
+02-27-2019 9:30am - Added error handler feature
+02-27-2019 10:00am - Refactored API search route
+02-27-2019 11:45am - Added dummy test to DB
 
 ## Credits and Collaborations
 Tanner Percival was my collaborator for building this app.
 
+# Monday 2/26
 
 ## Feature 1: Get Application to Load
 
@@ -68,6 +73,59 @@ Finish time: _____
 Actual time needed to complete: _____
 
 ## Feature 5: Style Webpage
+
+Estimate of time needed to complete: 1 hour
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+
+# Tuesday 2/27 
+
+## Feature 1:
+
+Estimate of time needed to complete: 1 hour
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+## Feature
+
+Estimate of time needed to complete: 1 hour
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+## Feature
+
+Estimate of time needed to complete: 1 hour
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+## Feature
+
+Estimate of time needed to complete: 1 hour
+
+Start time: _____
+
+Finish time: _____
+
+Actual time needed to complete: _____
+
+## Feature
 
 Estimate of time needed to complete: 1 hour
 

@@ -9,3 +9,6 @@ CREATE TABLE IF NOT EXISTS books (
   description VARCHAR(2000),
   bookshelf VARCHAR(255)
 );
+
+INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ('Kipling', 'Jungle Book', '1234567890123', 'asdfsdfasdfasdf', 'sdfsdfsdfdf', 'asdfsdf') RETURNING id;
+INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ('Kipling', 'Jungle Book', '1234567890123', 'asdfsdfasdfasdf', 'sdfsdfsdfdf', 'asdfsdf') RETURNING id;

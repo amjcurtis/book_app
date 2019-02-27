@@ -33,7 +33,7 @@ app.get('/', newSearch);
 
 // Create new search to Google Books API
 // Listens for post (from html form in index.ejs)
-app.post('/searches', createSearch); 
+app.post('/searches/show', createSearch); 
 
 // Catch-all for errors (must come after all other routes)
 app.get('*', (request, response) => response.status(404).send('This route does not exist!'));
@@ -64,7 +64,7 @@ function Book(res) {
 // HELPER FUNCTIONS
 ///////////////////////////////
 function getSearchHistory(request, response){
-  let SQL = 'SELECT * from tasks;';
+  let SQL = 'SELECT * from books;';
 
   return client.query(SQL)
     .then(results => response.render('index', {results: results.rows}))
@@ -72,7 +72,7 @@ function getSearchHistory(request, response){
 }
 
 // function viewDetails(request, response){
-//   let SQL =  'SELECT * FROM tasks WHERE id=$1;';
+//   let SQL =  'SELECT * FROM books WHERE id=$1;';
 //   let values = [request.params.'PARAM_GOES_HERE'];
 
 //   return client.query(SQL, values)
@@ -108,4 +108,16 @@ function createSearch(request, response) {
     .then(results => response.render('pages/searches/show', { searchResults: results }))
     .catch(error => handleError(error, response));
 
+}
+
+function insertIntoDatabase(request, response) {
+  
+  let newSQL = 'INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING ID;';
+  console.log('newSQL', newSQL);
+  
+  
+  return client.query(newSQL, newValues)
+    .then(result => {
+
+    });
 }
