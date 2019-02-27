@@ -40,13 +40,15 @@ app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 ///////////////////////////////
 
 function Book(res) {
-  // const placeholderImage = 'https://i.imgur.com/J5LVHEL.jpg';
+  // const placeholderImage = 'https://i.imgur.com/J5LVHEL.jpg'; // Attribution: used in solution code we went over in in-class code review
 
   this.title = res.title;
   this.author = res.authors;
   // TODO Add short-circuit evaluation in case API returns no image
-  this.image_url = res.imageLinks.thumbnail; // res.imageLinks ? res.imageLInks.smallThumbnail : placeholderImage;
-  this.description = res.description; // TODO Add shot-circuit fallback in case no description?
+  // TODO Find out why the result chains below were used in the solution code we reviewed in class: 
+  // res.imageLinks ? res.imageLinks.smallThumbnail : placeholderImage;
+  this.image_url = res.imageLinks.thumbnail; 
+  this.description = res.description; // TODO Add short-circuit fallback in case no description?
 }
 
 ///////////////////////////////
