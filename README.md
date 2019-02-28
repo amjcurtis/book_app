@@ -64,23 +64,23 @@ Actual time needed to complete: 1 hour 55 min
 
 ## Feature 4: Implement Error Handling
 
-Estimate of time needed to complete: 30 minutes
+Estimate of time needed to complete: 30 min
 
-Start time: _____
+Start time: 9:00am 2/27
 
-Finish time: _____
+Finish time: 9:15am 2/27
 
-Actual time needed to complete: _____
+Actual time needed to complete: 15 min
 
 ## Feature 5: Style Webpage
 
 Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 8:00pm 2/26
 
-Finish time: _____
+Finish time: 9:00pm 2/26
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1 hour
 
 
 # Tuesday 2/27 
