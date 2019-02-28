@@ -30,15 +30,15 @@ JavaScript, HTML, CSS, a templating engine (Handlebars or EJS), Node.js, Express
 ## Credits and Collaborations
 Tanner Percival was my collaborator for building this app.
 
-# Monday 2/26
+# Lab 11
 
 ## Feature 1: Get Application to Load
 
 Estimate of time needed to complete: 60 minutes
 
-Start time: 9:35am
+Start time: 9:35am 2/26
 
-Finish time: 10:35am
+Finish time: 10:35am 2/26
 
 Actual time needed to complete: 60 minutes
 
@@ -46,9 +46,9 @@ Actual time needed to complete: 60 minutes
 
 Estimate of time needed to complete: 45 minutes
 
-Start time: 10:35am
+Start time: 10:35am 2/26
 
-Finish time: 11:15am
+Finish time: 11:15am 2/26
 
 Actual time needed to complete: 40 minutes
 
@@ -56,9 +56,9 @@ Actual time needed to complete: 40 minutes
 
 Estimate of time needed to complete: 1 hour 15 minutes
 
-Start time: 11:20am
+Start time: 11:20am 2/26
 
-Finish time: 1:15pm
+Finish time: 1:15pm 2/26
 
 Actual time needed to complete: 1 hour 55 min
 
@@ -83,23 +83,23 @@ Finish time: 9:00pm 2/26
 Actual time needed to complete: 1 hour
 
 
-# Tuesday 2/27 
+# Lab 12 
 
-## Feature 1:
-
-Estimate of time needed to complete: 1 hour
-
-Start time: _____
-
-Finish time: _____
-
-Actual time needed to complete: _____
-
-## Feature
+## Feature: Render Saved Books from DB onto Home Page
 
 Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 9:20am 2/28
+
+Finish time: 11:10am 2/28
+
+Actual time needed to complete: 1 hr 50 min
+
+## Feature: Display Details on Saved Books
+
+Estimate of time needed to complete: 90 min
+
+Start time: 11:10am 2/28
 
 Finish time: _____
 
