@@ -28,24 +28,23 @@ client.on('error', err => console.error(err))
 // API Routes
 ///////////////////////////////
 
+// Render homepage
+app.get('/', retrieveDatabaseBooks);
 
-//render home page
-app.get('/', retrieveDataBaseBooks);
 // Render search form
 app.get('/searches/new', newSearch);
 
 // Create new search to Google Books API
-// Listens for post (from html form in index.ejs)
-app.post('/searches/show', createSearch);
+app.post('/searches/show', createSearch); // Listens for post (from html form in index.ejs)
+
+// Route to book details view
+app.get('/books/book-details/:id', viewBookDetails);
 
 // Catch-all for errors (must come after all other routes)
 app.get('*', (request, response) => response.status(404).send('This route does not exist!'));
 
 // Start server listening on port
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
-
-//get details page
-// app.get('/details/:book_details', viewDetails);
 
 ///////////////////////////////
 // MODELS
@@ -68,26 +67,25 @@ function Book(res) {
 ///////////////////////////////
 // HELPER FUNCTIONS
 ///////////////////////////////
-function retrieveDataBaseBooks(request, response){
+function retrieveDatabaseBooks(request, response){
   let SQL = 'SELECT * from books;';
   return client.query(SQL)
     .then(results => response.render('pages/index', {books: results.rows}))
     .catch(error => handleError(error, response));
 }
 
-// console.log('function ran', getSearchHistory())
+function viewBookDetails(request, response){
+  let SQL =  'SELECT * FROM books WHERE id=$1;';
+  let values = [request.params.id];
+  console.log('values', values);
 
-
-// function viewDetails(request, response){
-//   let SQL =  'SELECT * FROM books WHERE id=$1;';
-//   let values = [request.params.'PARAM_GOES_HERE'];
-
-//   return client.query(SQL, values)
-//     .then(result => {
-//       return response.render('pages/book-details', {task:result.rows[0]});
-//     })
-//     .catch(err => handleError (err, response));
-// }
+  return client.query(SQL, values)
+    .then(result => {
+      // console.log('single', result.rows[0]);
+      return response.render('pages/books/book-details', {books: result.rows});
+    })
+    .catch(err => handleError (err, response));
+}
 
 function handleError(err, res) {
   console.error(err);

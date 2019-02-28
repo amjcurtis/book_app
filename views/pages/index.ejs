@@ -7,29 +7,32 @@
 
 <body>
   <main>
-  <header>
-    <%- include('./../layout/header') %>
-  </header>
-    
+    <header>
+      <%- include('./../layout/header') %>
+    </header>
 
-      <section class="book-view container">
-        <ul id="book-list">
-          <% books.forEach(book => { %>
-          <li class="book-item" data-id="<%= book.id %>">
-            <h4>Book: <%= book.title %></h4>
-            <p>Authors: <%= book.authors %></p>
-            <a href="/books/book-details.ejs">view details</a>
-          </li>
-          <% }) %>
-        </ul>
-      </section>
-    
-      
-    
-  <footer>
-    <%- include('./../layout/footer') %>
-  </footer>
-</main>
+    <section class="book-count">
+      <h4> <%= books.length %> Saved Books</h4>
+    </section>
+
+    <section class="book-view container">
+      <ul id="book-list">
+        <% books.forEach(book => { %>
+        <li class="book-item" data-id="<%= book.id %>">
+          <h4>Book: <%= book.title %></h4>
+          <p>Authors: <%= book.authors %></p>
+          <a href="/books/book-details/<%= book.id %>">View Details</a>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+
+
+
+    <footer>
+      <%- include('./../layout/footer') %>
+    </footer>
+  </main>
 </body>
 
 </html>
