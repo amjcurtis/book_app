@@ -6,37 +6,30 @@
 </head>
 
 <body>
+  <main>
   <header>
     <%- include('./../layout/header') %>
   </header>
-  <main>
-    <h4><p>Search by Title or Author</p></h4>
-    <form action="/searches/show" method="post">
-      <div id="search-box-container">
-      <input id="search-box" type="text" name="search" placeholder="Enter title or author" required />
-      </div>
-      <fieldset>
-        <div id="title-box-container">
-        <label for="title">
-          <span>Title</span>
-          <input type="radio" name="search" value="title" required />
-        </label>
-      </div>
-      </fieldset>
-      <fieldset>
-        <div id="author-box-container">
-        <label for="author">
-          <span>Author</span>
-          <input type="radio" name="search" value="author" required />
-        </label>
-      </div>
-      </fieldset>
-      <button type="submit">Search the google books API</button>
-    </form>
-  </main>
+    
+
+      <section class="book-view container">
+        <ul id="book-list">
+          <% books.forEach(book => { %>
+          <li class="book-item" data-id="<%= book.id %>">
+            <h4>Book: <%= book.title %></h4>
+            <p>Authors: <%= book.authors %></p>
+            <a href="/books/book-details.ejs">view details</a>
+          </li>
+          <% }) %>
+        </ul>
+      </section>
+    
+      
+    
   <footer>
     <%- include('./../layout/footer') %>
   </footer>
+</main>
 </body>
 
 </html>

@@ -28,12 +28,15 @@ client.on('error', err => console.error(err))
 // API Routes
 ///////////////////////////////
 
+
+//render home page
+app.get('/', retrieveDataBaseBooks);
 // Render search form
-app.get('/', newSearch);
+app.get('/searches/new', newSearch);
 
 // Create new search to Google Books API
 // Listens for post (from html form in index.ejs)
-app.post('/searches/show', createSearch); 
+app.post('/searches/show', createSearch);
 
 // Catch-all for errors (must come after all other routes)
 app.get('*', (request, response) => response.status(404).send('This route does not exist!'));
@@ -56,7 +59,7 @@ function Book(res) {
   // TODO Add short-circuit evaluation in case API returns no image
   // TODO Find out why the result chains below were used in the solution code we reviewed in class: 
   // res.imageLinks ? res.imageLinks.smallThumbnail : placeholderImage;
-  this.image_url = res.thumbnail; 
+  this.image_url = res.thumbnail;
   this.description = res.description;
   this.isbn = res.industryIdentifiers[0].identifier;
   // TODO Add short-circuit fallback in case no description?
@@ -65,13 +68,14 @@ function Book(res) {
 ///////////////////////////////
 // HELPER FUNCTIONS
 ///////////////////////////////
-function getSearchHistory(request, response){
+function retrieveDataBaseBooks(request, response){
   let SQL = 'SELECT * from books;';
-
   return client.query(SQL)
-    .then(results => response.render('index', {results: results.rows}))
+    .then(results => response.render('pages/index', {books: results.rows}))
     .catch(error => handleError(error, response));
 }
+
+// console.log('function ran', getSearchHistory())
 
 
 // function viewDetails(request, response){
@@ -91,7 +95,7 @@ function handleError(err, res) {
 }
 
 function newSearch(request, response) {
-  response.render('pages/index');
+  response.render('pages/searches/new');
   app.use(express.static('public'));
 }
 
