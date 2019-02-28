@@ -57,7 +57,9 @@ function Book(res) {
   // TODO Find out why the result chains below were used in the solution code we reviewed in class: 
   // res.imageLinks ? res.imageLinks.smallThumbnail : placeholderImage;
   this.image_url = res.thumbnail; 
-  this.description = res.description; // TODO Add short-circuit fallback in case no description?
+  this.description = res.description;
+  this.isbn = res.industryIdentifiers[0].identifier;
+  // TODO Add short-circuit fallback in case no description?
 }
 
 ///////////////////////////////
@@ -70,7 +72,7 @@ function getSearchHistory(request, response){
     .then(results => response.render('index', {results: results.rows}))
     .catch(error => handleError(error, response));
 }
-console.log(getSearchHistory())
+
 
 // function viewDetails(request, response){
 //   let SQL =  'SELECT * FROM books WHERE id=$1;';
@@ -111,14 +113,3 @@ function createSearch(request, response) {
 
 }
 
-function insertIntoDatabase(request, response) {
-  
-  let newSQL = 'INSERT INTO books (author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4, $5, $6) RETURNING ID;';
-  console.log('newSQL', newSQL);
-  
-  
-  return client.query(newSQL, newValues)
-    .then(result => {
-
-    });
-}
