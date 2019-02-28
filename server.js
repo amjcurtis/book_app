@@ -51,17 +51,13 @@ app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 ///////////////////////////////
 
 function Book(res) {
-  // const placeholderImage = 'https://i.imgur.com/J5LVHEL.jpg'; // Attribution: used in solution code we went over in in-class code review
+  const placeholderImage = 'https://i.imgur.com/J5LVHEL.jpg'; // Attribution: used in solution code we went over in in-class code review
 
   this.title = res.title;
   this.author = res.authors;
-  // TODO Add short-circuit evaluation in case API returns no image
-  // TODO Find out why the result chains below were used in the solution code we reviewed in class: 
-  // res.imageLinks ? res.imageLinks.smallThumbnail : placeholderImage;
-  this.image_url = res.thumbnail;
-  this.description = res.description;
-  this.isbn = res.industryIdentifiers[0].identifier;
-  // TODO Add short-circuit fallback in case no description?
+  this.image_url = res.imageLinks ? res.imageLinks.smallThumbnail : placeholderImage;
+  this.description = res.description ? res.description : 'No description available';
+  this.isbn = res.industryIdentifiers ? `ISBN_13 ${res.industryIdentifiers[0].identifier}` : 'No ISBN available';
 }
 
 ///////////////////////////////
