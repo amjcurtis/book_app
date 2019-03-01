@@ -9,9 +9,9 @@
         <ul class="ul-search-result">
             <% searchResults.forEach(book => { %>
                 <img src= <%= book.image_url %>  >
-                <li class="list-items-search-results"> <%= book.author %> </li> 
-                <li class="list-items-search-results"> <%= book.title %> </li> 
-                <li class="list-items-search-results"> <%= book.description %> </li> 
+                <li class="list-items-search-results"> Author : <%= book.author %> </li> 
+                <li class="list-items-search-results"> Title : <%= book.title %> </li> 
+                <li class="list-items-search-results"> Description: <%= book.description %> </li> 
             <% }) %>
         </ul>
 
