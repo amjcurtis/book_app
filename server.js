@@ -38,7 +38,7 @@ app.get('/searches/new', newSearch);
 app.post('/searches/show', createSearch); // Listens for post (from html form in index.ejs)
 
 // Route to book details view
-app.get('/books/book-details/:book_id', getOneBook);
+app.get('/pages/books/show/:book_id', getOneBook);
 
 // Catch-all for errors (must come after all other routes)
 app.get('*', (request, response) => response.status(404).send('This route does not exist!'));
@@ -78,7 +78,7 @@ function getOneBook(request, response){
   return client.query(SQL, values)
     .then(result => {
       // console.log('single', result.rows[0]);
-      return response.render('pages/books/book-details', {books: result.rows});
+      return response.render('pages/books/show', {books: result.rows});
     }) // NEED TO SPECIFY INDEX OF rows?
     .catch(err => handleError (err, response));
 }

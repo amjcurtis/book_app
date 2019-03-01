@@ -21,13 +21,11 @@
         <li class="book-item" data-id="<%= book.id %>">
           <h4>Book: <%= book.title %></h4>
           <p>Authors: <%= book.authors %></p>
-          <a href="/books/book-details/<%= book.id %>">View Details</a>
+          <a href="/pages/books/show/<%= book.id %>">View Details</a>
         </li>
         <% }) %>
       </ul>
     </section>
-
-
 
     <footer>
       <%- include('./../layout/footer') %>
