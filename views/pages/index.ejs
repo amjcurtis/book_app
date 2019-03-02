@@ -20,7 +20,7 @@
         <% books.forEach(book => { %>
         <li class="book-item" data-id="<%= book.id %>">
           <h4>Book: <%= book.title %></h4>
-          <p>Authors: <%= book.authors %></p>
+          <p>Authors: <%= book.author %></p>
           <a href="/pages/books/show/<%= book.id %>">View Details</a>
         </li>
         <% }) %>
